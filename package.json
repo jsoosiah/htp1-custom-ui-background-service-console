@@ -1,0 +1,31 @@
+{
+  "name": "htp1-custom-ui-background-service-console",
+  "version": "1.0.0",
+  "description": "",
+  "main": "htp1-custom-ui-background-service.js",
+  "scripts": {
+    "start": "node htp1-custom-ui-background-service.js",
+    "build": "pkg --targets \"node16-linux-x64,node16-macos-x64,node16-win-x64,node16-linux-arm64\" --no-bytecode --public-packages \"*\" --public .\\htp1-custom-ui-background-service.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jsoosiah/htp1-custom-ui-background-service-console.git"
+  },
+  "author": "Jeff Soosiah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsoosiah/htp1-custom-ui-background-service-console/issues"
+  },
+  "homepage": "https://github.com/jsoosiah/htp1-custom-ui-background-service-console#readme",
+  "dependencies": {
+    "@slite/reconnecting-websocket": "^4.4.1",
+    "fast-json-patch": "^3.1.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "vue": "^3.2.29",
+    "ws": "^8.4.2"
+  },
+  "devDependencies": {
+    "pkg": "^5.5.2"
+  }
+}
