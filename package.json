@@ -1,6 +1,6 @@
 {
   "name": "htp1-custom-ui-background-service-console",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "htp1-custom-ui-background-service.js",
   "scripts": {

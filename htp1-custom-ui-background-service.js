@@ -72,6 +72,17 @@ function applyDefaultsForCurrentInput(reason) {
     setDiracSlot(currentInput?.value?.diracslot);
   }
 
+  // run input macro if needed
+  if (typeof currentInput?.value?.macro === 'string') {
+    console.log({
+      event: `Run Macro for ${currentInput?.value?.label}`,
+      reason: reason,
+      old: '--',
+      new: mso?.value?.svronly?.macroNames[currentInput?.value?.macro],
+      time: new Date(),
+    });
+  }
+
   // reset BEQ filters if needed
   for (const ch of ['sub1', 'sub2', 'sub3', 'sub4', 'sub5']) {
     for (let slot = 0; slot < 16; slot++) {
