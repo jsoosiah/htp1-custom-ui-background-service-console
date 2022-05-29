@@ -55,7 +55,7 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@master
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "htp1-custom-ui-background-service-linux-arm64,htp1-custom-ui-background-service-linux-x64,htp1-custom-ui-background-service-macos-x64,htp1-custom-ui-background-service-win-x64.exe"
+          artifacts: "htp1-custom-ui-background-service-*"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.package-version.outputs.current-version }}
           allowUpdates: true
