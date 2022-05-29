@@ -11,6 +11,7 @@ const {
   setDiracSlot,
   resetBEQ,
   removeBEQActive,
+  executeMacro
 } = useMso();
 
 const minimist = require( 'minimist');
@@ -74,13 +75,19 @@ function applyDefaultsForCurrentInput(reason) {
 
   // run input macro if needed
   if (typeof currentInput?.value?.macro === 'string') {
-    console.log({
-      event: `Run Macro for ${currentInput?.value?.label}`,
-      reason: reason,
-      old: '--',
-      new: mso?.value?.svronly?.macroNames[currentInput?.value?.macro],
-      time: new Date(),
-    });
+    const macro = getMacroCommands(currentInput?.value?.macro);
+
+    if (macro) {
+      console.log({
+        event: `Run Macro for ${currentInput?.value?.label}`,
+        reason: reason,
+        old: '--',
+        new: mso?.value?.svronly?.macroNames[currentInput?.value?.macro],
+        time: new Date(),
+      });
+  
+      executeMacro(macro);
+    }
   }
 
   // reset BEQ filters if needed
@@ -115,6 +122,14 @@ const currentInput = computed(() => {
 
   return null;
 });
+
+function getMacroCommands(macroId) {
+  if (mso?.value?.svronly.hasOwnProperty(macroId)) {
+    return mso?.value?.svronly[macroId];
+  } 
+
+  return mso?.value?.svronly.extraMacros[macroId];
+}
 
 watch(
   () => powerIsOn.value,
